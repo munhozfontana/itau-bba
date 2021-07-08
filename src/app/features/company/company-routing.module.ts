@@ -6,16 +6,16 @@ import { CompanyListComponent } from './company-list/company-list.component';
 const routes: Routes = [
   {
     path: 'list',
-    component: CompanyListComponent
+    component: CompanyListComponent,
   },
   {
     path: 'detail',
-    component: CompanyDetailComponent
-  }
+    component: CompanyDetailComponent,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class CompanyRoutingModule { }
+export class CompanyRoutingModule {}
