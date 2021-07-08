@@ -9,6 +9,7 @@ const routes: Routes = [
         (m) => m.CompanyRoutingModule
       ),
   },
+  { path: '', redirectTo: '/company', pathMatch: 'full' }, // redirect to `first-component`,
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
