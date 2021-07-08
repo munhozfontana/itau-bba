@@ -1,0 +1,48 @@
+$gray-color: #333333
+
+// position elemnts
+section
+  border-bottom: 10px solid #ff7b24
+  height: 98%
+  background-color: #ffe0cc
+
+section > div
+  display: grid
+  grid-template-columns: 168fr 753fr 753fr 146fr
+  grid-template-areas: "space logo-area profile-area"
+
+.logo
+  grid-area: logo-area
+  width: 100px
+  display: flex
+
+.profile-detail
+  grid-area: profile-area
+  width: 40%
+  height: 60%
+  justify-content: space-around
+  display: flex
+  flex: 1
+  align-self: center
+  justify-self: end
+
+img
+  align-self: center
+  width: auto
+  height: 6vh
+
+section > div > div > p , span
+  align-self: center
+
+//styles
+.strong-text
+  font-weight: bold
+  color: gray-color
+  margin-bottom: 0
+
+.comum-text
+  color: gray-color
+  margin-bottom: 0
+
+.avatar
+  border-radius: 50%
