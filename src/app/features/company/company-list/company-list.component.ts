@@ -4,7 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { first } from 'rxjs/operators';
-import { CompanyModelView } from './../../../shared/models/company_model';
+import { CompanyModel } from './../../../shared/models/company_model';
 import { CompanyService } from './../../../shared/services/company.service';
 
 @Component({
@@ -18,7 +18,7 @@ export class CompanyListComponent implements OnInit {
 
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  dataSource!: MatTableDataSource<CompanyModelView>;
+  dataSource!: MatTableDataSource<CompanyModel>;
   displayedColumns: string[] = [
     'name',
     'business',
@@ -45,8 +45,8 @@ export class CompanyListComponent implements OnInit {
       });
   }
 
-  private populateList(res: CompanyModelView[]) {
-    this.dataSource = new MatTableDataSource<CompanyModelView>(res);
+  private populateList(res: CompanyModel[]) {
+    this.dataSource = new MatTableDataSource<CompanyModel>(res);
   }
 
   private configTable() {
