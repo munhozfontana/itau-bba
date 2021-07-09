@@ -3,7 +3,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
-import { MatPaginatorModule } from '@angular/material/paginator';
+import {
+  MatPaginatorIntl,
+  MatPaginatorModule,
+} from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
@@ -13,6 +16,7 @@ import { LoadingComponent } from './components/contents/loading/loading.componen
 import { LoadingService } from './components/contents/loading/loading.service';
 import { HeaderComponent } from './components/header/header.component';
 import { TitleComponent } from './components/title/title.component';
+import { CustomMatPaginatorIntlService } from './services/custom-mat-paginator-intl.service';
 
 @NgModule({
   declarations: [
@@ -31,6 +35,7 @@ import { TitleComponent } from './components/title/title.component';
     BrowserAnimationsModule,
     HttpClientModule,
     MatProgressSpinnerModule,
+    MatIconModule,
   ],
   exports: [
     HeaderComponent,
@@ -43,7 +48,14 @@ import { TitleComponent } from './components/title/title.component';
     HttpClientModule,
     MatProgressSpinnerModule,
     LoadingComponent,
+    MatIconModule,
   ],
-  providers: [LoadingService],
+  providers: [
+    LoadingService,
+    {
+      provide: MatPaginatorIntl,
+      useClass: CustomMatPaginatorIntlService,
+    },
+  ],
 })
 export class SharedModule {}

@@ -19,7 +19,13 @@ export class CompanyListComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   dataSource!: MatTableDataSource<CompanyModel>;
-  displayedColumns: string[] = ['name', 'business', 'valuation', 'active'];
+  displayedColumns: string[] = [
+    'name',
+    'business',
+    'valuation',
+    'active',
+    'acao',
+  ];
 
   constructor(
     private companyService: CompanyService,
@@ -53,5 +59,17 @@ export class CompanyListComponent implements OnInit, AfterViewInit {
   private configTable() {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
+  }
+
+  public getStatus(status: boolean) {
+    if (status) {
+      return {
+        color: '#72f87b',
+      };
+    } else {
+      return {
+        color: '#ff7573',
+      };
+    }
   }
 }
