@@ -1,45 +1,57 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
-  { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },
-  { position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },
-  { position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be' },
-  { position: 5, name: 'Boron', weight: 10.811, symbol: 'B' },
-  { position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C' },
-  { position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N' },
-  { position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O' },
-  { position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F' },
-  { position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne' },
-];
+import { finalize, first } from 'rxjs/operators';
+import { LoadingService } from './../../../shared/components/contents/loading/loading.service';
+import { CompanyModel } from './../../../shared/models/company_model';
+import { CompanyService } from './../../../shared/services/company.service';
 
 @Component({
   selector: 'app-company-list',
   templateUrl: './company-list.component.html',
   styleUrls: ['./company-list.component.sass'],
 })
-export class CompanyListComponent implements AfterViewInit {
+export class CompanyListComponent implements OnInit, AfterViewInit {
   title: String = 'Polos Itaú';
   subTitle: String = 'confira abaixo alguns dos principais polos do itaú';
 
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource!: MatTableDataSource<PeriodicElement>;
-
   @ViewChild(MatSort) sort!: MatSort;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  dataSource!: MatTableDataSource<CompanyModel>;
+  displayedColumns: string[] = ['name', 'business', 'valuation', 'active'];
 
-  constructor() {
-    this.dataSource = new MatTableDataSource(ELEMENT_DATA);
+  constructor(
+    private companyService: CompanyService,
+    private loadingService: LoadingService
+  ) {}
+
+  // lifecycles from angular
+  ngOnInit(): void {
+    this.getCompany();
   }
 
-  ngAfterViewInit() {
+  ngAfterViewInit() {}
+
+  // methods
+  private getCompany(): void {
+    this.loadingService.onLoading();
+    this.companyService
+      .findAll()
+      .pipe(first())
+      .pipe(finalize(this.loadingService.offLoading))
+      .subscribe((res) => {
+        this.populateList(res);
+        this.configTable();
+      });
+  }
+
+  private populateList(res: CompanyModel[]) {
+    this.dataSource = new MatTableDataSource<CompanyModel>(res);
+  }
+
+  private configTable() {
     this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
   }
 }

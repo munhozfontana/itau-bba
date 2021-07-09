@@ -1,0 +1,8 @@
+<div>
+  <ng-container *ngIf="isLoading; else elseTemplate">
+    <div  class="spinner"><mat-spinner></mat-spinner></div>
+  </ng-container>
+  <ng-template #elseTemplate>
+    <ng-content></ng-content>
+  </ng-template>
+</div>
