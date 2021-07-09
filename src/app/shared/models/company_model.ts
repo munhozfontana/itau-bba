@@ -9,3 +9,7 @@ export class CompanyModel {
   cep!: string;
   cnpj!: number;
 }
+
+export class CompanyModelView extends CompanyModel {
+  show: boolean = false;
+}

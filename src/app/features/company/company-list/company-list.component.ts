@@ -1,11 +1,10 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
-import { finalize, first } from 'rxjs/operators';
-import { LoadingService } from './../../../shared/components/contents/loading/loading.service';
-import { CompanyModel } from './../../../shared/models/company_model';
+import { first } from 'rxjs/operators';
+import { CompanyModelView } from './../../../shared/models/company_model';
 import { CompanyService } from './../../../shared/services/company.service';
 
 @Component({
@@ -13,13 +12,13 @@ import { CompanyService } from './../../../shared/services/company.service';
   templateUrl: './company-list.component.html',
   styleUrls: ['./company-list.component.sass'],
 })
-export class CompanyListComponent implements OnInit, AfterViewInit {
+export class CompanyListComponent implements OnInit {
   title: String = 'Polos Itaú';
   subTitle: String = 'confira abaixo alguns dos principais polos do itaú';
 
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  dataSource!: MatTableDataSource<CompanyModel>;
+  dataSource!: MatTableDataSource<CompanyModelView>;
   displayedColumns: string[] = [
     'name',
     'business',
@@ -28,34 +27,26 @@ export class CompanyListComponent implements OnInit, AfterViewInit {
     'acao',
   ];
 
-  constructor(
-    private companyService: CompanyService,
-    private loadingService: LoadingService,
-    private router: Router
-  ) {}
+  constructor(private companyService: CompanyService, private router: Router) {}
 
   // lifecycles from angular
   ngOnInit(): void {
     this.getCompany();
   }
 
-  ngAfterViewInit() {}
-
   // methods
   private getCompany(): void {
-    this.loadingService.onLoading();
     this.companyService
       .findAll()
       .pipe(first())
-      .pipe(finalize(this.loadingService.offLoading))
       .subscribe((res) => {
         this.populateList(res);
         this.configTable();
       });
   }
 
-  private populateList(res: CompanyModel[]) {
-    this.dataSource = new MatTableDataSource<CompanyModel>(res);
+  private populateList(res: CompanyModelView[]) {
+    this.dataSource = new MatTableDataSource<CompanyModelView>(res);
   }
 
   private configTable() {
@@ -65,19 +56,17 @@ export class CompanyListComponent implements OnInit, AfterViewInit {
 
   public getStatus(status: boolean) {
     if (status) {
-      return {
-        'font-size': '19px',
-        color: '#72f87b',
-      };
+      return { active: true };
     } else {
-      return {
-        'font-size': '19px',
-        color: '#ff7573',
-      };
+      return { desactive: true };
     }
   }
 
   public navigateToDetail(id: String) {
-    this.router.navigate([`detail/${id}`]);
+    this.router.navigate([`company/detail/${id}`]);
+  }
+
+  public searchText(event: String) {
+    this.dataSource.filter = event.trim().toLowerCase();
   }
 }

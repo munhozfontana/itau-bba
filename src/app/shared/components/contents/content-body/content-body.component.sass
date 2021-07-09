@@ -1,11 +1,15 @@
 div
   display: grid
   grid-template-rows: 15vh 72.5vh
-  grid-template-columns: 168fr 1506fr 146fr
-  grid-template-areas: ". body ." ".content ."
+  grid-template-columns: 168fr 853fr 437fr 146fr
+  grid-template-areas: ".body search ." ".content content ."
 
 app-title
   grid-area: body
 
 div > div
   grid-area: content
+
+mat-form-field
+  grid-area: search
+  align-self: center

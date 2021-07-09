@@ -1,5 +1,9 @@
 <div>
   <app-title [title]="title" [subTitle]="subTitle"></app-title>
+  <mat-form-field *ngIf=search appearance="outline">
+    <mat-label>Pesquisar...</mat-label>
+    <input matInput placeholder="Placeholder" [formControl]="searchFromControl" (ngModelChange)="changeText($event)"   />
+  </mat-form-field>
   <div style="display: inline-block">
     <ng-content> </ng-content>
   </div>

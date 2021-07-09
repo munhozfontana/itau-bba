@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from './../../../environments/environment';
-import { CompanyModel } from './../models/company_model';
+import { CompanyModelView } from './../models/company_model';
 
 @Injectable({
   providedIn: 'root',
@@ -10,11 +10,11 @@ import { CompanyModel } from './../models/company_model';
 export class CompanyService {
   constructor(private http: HttpClient) {}
 
-  findAll(): Observable<CompanyModel[]> {
-    return this.http.get<CompanyModel[]>(`${environment.itau}`);
+  findAll(): Observable<CompanyModelView[]> {
+    return this.http.get<CompanyModelView[]>(`${environment.itau}`);
   }
 
-  findById(id: number): Observable<CompanyModel> {
-    return this.http.get<CompanyModel>(`${environment.itau}/${id}`);
+  findById(id: number): Observable<CompanyModelView> {
+    return this.http.get<CompanyModelView>(`${environment.itau}/${id}`);
   }
 }

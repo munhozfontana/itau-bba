@@ -1,4 +1,4 @@
-<app-content-body [title]="title" [subTitle]="subTitle">
+<app-content-body [title]="title" [subTitle]="subTitle" [search]='true' (ngModelChange)="searchText($event) ">
   <div class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
       <ng-container matColumnDef="name">
@@ -21,7 +21,7 @@
       <ng-container matColumnDef="active">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Situação</th>
         <td mat-cell *matCellDef="let element">
-          <mat-icon [ngStyle]="getStatus(element.active)">circle</mat-icon>
+          <mat-icon [ngClass]="getStatus(element.active)">circle</mat-icon>
         </td>
       </ng-container>
 
