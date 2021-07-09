@@ -11,16 +11,19 @@ import {
   MatPaginatorModule,
 } from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { ContentBodyComponent } from './components/contents/content-body/content-body.component';
-import { LoadingServiceInterceptorService } from './components/contents/loading/loading-service-interceptor.service';
 import { LoadingComponent } from './components/contents/loading/loading.component';
 import { HeaderComponent } from './components/header/header.component';
 import { TitleComponent } from './components/title/title.component';
 import { CustomMatPaginatorIntlService } from './services/custom-mat-paginator-intl.service';
+import { LoadingInterceptorService } from './services/interceptors/loading/loading-interceptor.service';
+import { ToastInterceptorService } from './services/interceptors/toast/toast-interceptor.service';
+
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -43,6 +46,7 @@ import { CustomMatPaginatorIntlService } from './services/custom-mat-paginator-i
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
+    MatSnackBarModule,
   ],
   exports: [
     HeaderComponent,
@@ -60,11 +64,17 @@ import { CustomMatPaginatorIntlService } from './services/custom-mat-paginator-i
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
+    MatSnackBarModule,
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: LoadingServiceInterceptorService,
+      useClass: ToastInterceptorService,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoadingInterceptorService,
       multi: true,
     },
     {

@@ -7,12 +7,12 @@ import {
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { delay, finalize } from 'rxjs/operators';
-import { LoadingService } from './loading.service';
+import { LoadingService } from '../../../components/contents/loading/loading.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class LoadingServiceInterceptorService implements HttpInterceptor {
+export class LoadingInterceptorService implements HttpInterceptor {
   constructor(private loadingService: LoadingService) {}
 
   intercept(
