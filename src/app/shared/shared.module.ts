@@ -16,6 +16,8 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
+import { NgxMaskModule } from 'ngx-mask';
+import { CepComponent } from './components/cep/cep.component';
 import { ContentBodyComponent } from './components/contents/content-body/content-body.component';
 import { LoadingComponent } from './components/contents/loading/loading.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -30,6 +32,7 @@ import { ToastInterceptorService } from './services/interceptors/toast/toast-int
     TitleComponent,
     ContentBodyComponent,
     LoadingComponent,
+    CepComponent,
   ],
   imports: [
     CommonModule,
@@ -47,6 +50,7 @@ import { ToastInterceptorService } from './services/interceptors/toast/toast-int
     MatInputModule,
     ReactiveFormsModule,
     MatSnackBarModule,
+    NgxMaskModule.forRoot(),
   ],
   exports: [
     HeaderComponent,
@@ -65,6 +69,8 @@ import { ToastInterceptorService } from './services/interceptors/toast/toast-int
     MatInputModule,
     ReactiveFormsModule,
     MatSnackBarModule,
+    CepComponent,
+    NgxMaskModule,
   ],
   providers: [
     {

@@ -3,9 +3,9 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
-import { first } from 'rxjs/operators';
+import { take } from 'rxjs/operators';
+import { CompanyService } from 'src/app/shared/services/extermal/company/company.service';
 import { CompanyModel } from './../../../shared/models/company_model';
-import { CompanyService } from './../../../shared/services/company.service';
 
 @Component({
   selector: 'app-company-list',
@@ -38,7 +38,7 @@ export class CompanyListComponent implements OnInit {
   private getCompany(): void {
     this.companyService
       .findAll()
-      .pipe(first())
+      .pipe(take(1))
       .subscribe((res) => {
         this.populateList(res);
         this.configTable();

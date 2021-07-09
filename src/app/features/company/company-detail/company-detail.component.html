@@ -1,5 +1,5 @@
-<app-content-body [title]="title" [subTitle]="subTitle" >
-  <p>company-detail works!</p>
+<app-content-body [title]="title" [subTitle]="subTitle">
+  <form [formGroup]="form">
+    <app-cep  (formGroupCep)="formCep($event)"  ></app-cep>
+  </form>
 </app-content-body>
-
-
