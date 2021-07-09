@@ -14,7 +14,7 @@ export class CompanyService {
     return this.http.get<CompanyModel[]>(`${environment.itau}`);
   }
 
-  findById(id: number): Observable<CompanyModel> {
+  findById(id: string): Observable<CompanyModel> {
     return this.http.get<CompanyModel>(`${environment.itau}/${id}`);
   }
 }
