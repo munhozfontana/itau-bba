@@ -11,6 +11,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterModule } from '@angular/router';
 import { ContentBodyComponent } from './components/contents/content-body/content-body.component';
 import { LoadingComponent } from './components/contents/loading/loading.component';
 import { LoadingService } from './components/contents/loading/loading.service';
@@ -36,6 +37,7 @@ import { CustomMatPaginatorIntlService } from './services/custom-mat-paginator-i
     HttpClientModule,
     MatProgressSpinnerModule,
     MatIconModule,
+    RouterModule,
   ],
   exports: [
     HeaderComponent,
@@ -49,6 +51,7 @@ import { CustomMatPaginatorIntlService } from './services/custom-mat-paginator-i
     MatProgressSpinnerModule,
     LoadingComponent,
     MatIconModule,
+    RouterModule,
   ],
   providers: [
     LoadingService,
