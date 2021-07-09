@@ -2,6 +2,7 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 import { finalize, first } from 'rxjs/operators';
 import { LoadingService } from './../../../shared/components/contents/loading/loading.service';
 import { CompanyModel } from './../../../shared/models/company_model';
@@ -29,7 +30,8 @@ export class CompanyListComponent implements OnInit, AfterViewInit {
 
   constructor(
     private companyService: CompanyService,
-    private loadingService: LoadingService
+    private loadingService: LoadingService,
+    private router: Router
   ) {}
 
   // lifecycles from angular
@@ -64,12 +66,18 @@ export class CompanyListComponent implements OnInit, AfterViewInit {
   public getStatus(status: boolean) {
     if (status) {
       return {
+        'font-size': '19px',
         color: '#72f87b',
       };
     } else {
       return {
+        'font-size': '19px',
         color: '#ff7573',
       };
     }
+  }
+
+  public navigateToDetail(id: String) {
+    this.router.navigate([`detail/${id}`]);
   }
 }
