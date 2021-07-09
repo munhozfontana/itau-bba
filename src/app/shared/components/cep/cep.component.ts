@@ -7,7 +7,6 @@ import {
 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { take } from 'rxjs/operators';
 import { CepModel } from '../../models/cep_model';
 import { CepService } from '../../services/extermal/cep/cep.service';
 
@@ -47,13 +46,10 @@ export class CepComponent implements OnInit, OnDestroy {
     this.form.get('cep')?.valueChanges.subscribe((cangedCep: string) => {
       if (cangedCep.length == 8 && this.toSend) {
         this.toSend = false;
-        this.cepService
-          .findByCep(cangedCep)
-          .pipe(take(1))
-          .subscribe((res) => {
-            this.form.patchValue(res);
-            this.formGroupCep.emit({ ...this.form.value } as CepModel);
-          });
+        this.cepService.findByCep(cangedCep).subscribe((cepRes) => {
+          this.form.patchValue(cepRes);
+          this.formGroupCep.emit(cepRes);
+        });
       } else if (cangedCep.length < 8) {
         this.toSend = true;
       }
@@ -61,6 +57,6 @@ export class CepComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.formSubscription.unsubscribe();
+    // this.formSubscription.unsubscribe();
   }
 }
