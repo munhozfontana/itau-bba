@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en-US" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="inputName" datatype="html">
+        <source>Nome</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/company/company-detail/company-detail.component.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+        <note priority="1" from="description">name from company</note>
+      </trans-unit>
+      <trans-unit id="inputness" datatype="html">
+        <source>Empresa</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/company/company-detail/company-detail.component.html</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+        <note priority="1" from="description">business from company</note>
+      </trans-unit>
+      <trans-unit id="inputtion" datatype="html">
+        <source>Valor</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/company/company-detail/company-detail.component.html</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+        <note priority="1" from="description">valuation from company</note>
+      </trans-unit>
+      <trans-unit id="inputCNPJ" datatype="html">
+        <source>CNPJ</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/company/company-detail/company-detail.component.html</context>
+          <context context-type="linenumber">31</context>
+        </context-group>
+        <note priority="1" from="description">CNPJ from company</note>
+      </trans-unit>
+      <trans-unit id="inputtive" datatype="html">
+        <source>Atívo?</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/company/company-detail/company-detail.component.html</context>
+          <context context-type="linenumber">41</context>
+        </context-group>
+        <note priority="1" from="description">Is company activey</note>
+      </trans-unit>
+      <trans-unit id="buttonToBack" datatype="html">
+        <source>Voltar</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/company/company-detail/company-detail.component.html</context>
+          <context context-type="linenumber">55,56</context>
+        </context-group>
+        <note priority="1" from="description">Button to back</note>
+      </trans-unit>
+      <trans-unit id="buttonToSave" datatype="html">
+        <source>Salvar</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/company/company-detail/company-detail.component.html</context>
+          <context context-type="linenumber">64,65</context>
+        </context-group>
+        <note priority="1" from="description">Button to save</note>
+      </trans-unit>
+      <trans-unit id="tableHeaderBusiness" datatype="html">
+        <source>Empresa</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/company/company-list/company-list.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+        <note priority="1" from="description">Title for describe business from company</note>
+      </trans-unit>
+      <trans-unit id="tableHeaderValuation" datatype="html">
+        <source>Valor</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/company/company-list/company-list.component.html</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+        <note priority="1" from="description">Title for describe value from company</note>
+      </trans-unit>
+      <trans-unit id="tableHeaderActive" datatype="html">
+        <source>Situação</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/company/company-list/company-list.component.html</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+        <note priority="1" from="description">Title for describe status company</note>
+      </trans-unit>
+      <trans-unit id="tableHeaderAction" datatype="html">
+        <source>Ação</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/company/company-list/company-list.component.html</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+        <note priority="1" from="description">Action in the page</note>
+      </trans-unit>
+      <trans-unit id="cepCep" datatype="html">
+        <source>Cep</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/cep/cep.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+        <note priority="1" from="description">Value from cep</note>
+      </trans-unit>
+      <trans-unit id="cepStreet" datatype="html">
+        <source>Rua</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/cep/cep.component.html</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+        <note priority="1" from="description">Value from street</note>
+      </trans-unit>
+      <trans-unit id="cepDistrict" datatype="html">
+        <source>Bairro</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/cep/cep.component.html</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+        <note priority="1" from="description">Value from district</note>
+      </trans-unit>
+      <trans-unit id="cepState" datatype="html">
+        <source>Estado</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/cep/cep.component.html</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+        <note priority="1" from="description">Value from state</note>
+      </trans-unit>
+      <trans-unit id="cepCity" datatype="html">
+        <source>Cidade</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/cep/cep.component.html</context>
+          <context context-type="linenumber">30</context>
+        </context-group>
+        <note priority="1" from="description">Value from city</note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

@@ -2,31 +2,31 @@
   <div class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
       <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Nome</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header i18="Title for describe name from company@@tableHeaderName">Nome</th>
         <td mat-cell *matCellDef="let element">{{ element.name }}</td>
       </ng-container>
 
       <ng-container matColumnDef="business">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Business</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header i18n="Title for describe business from company@@tableHeaderBusiness">Business</th>
         <td mat-cell *matCellDef="let element">{{ element.business }}</td>
       </ng-container>
 
       <ng-container matColumnDef="valuation">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Valuation</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header i18n="Title for describe value from company@@tableHeaderValuation">Valuation</th>
         <td mat-cell *matCellDef="let element">
           {{ element.valuation | currency }}
         </td>
       </ng-container>
 
       <ng-container matColumnDef="active">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Situação</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header i18n="Title for describe status company@@tableHeaderActive">Situação</th>
         <td mat-cell *matCellDef="let element">
           <mat-icon [ngClass]="getStatus(element.active)">circle</mat-icon>
         </td>
       </ng-container>
 
       <ng-container matColumnDef="acao">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Ação</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header i18n="Action in the page@@tableHeaderAction">Ação</th>
         <td mat-cell *matCellDef="let element">
           <mat-icon (click)="navigateToDetail(element.id)" aria-hidden="false"
             >visibility</mat-icon

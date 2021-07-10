@@ -7,6 +7,19 @@
   "newProjectRoot": "projects",
   "projects": {
     "itau-bba": {
+      "i18n": {
+        "sourceLocale": "en-US",
+        "locales": {
+          "br": {
+            "translation": "src/locale/messages.br.xlf",
+            "baseHref": ""
+          },
+          "us": {
+            "translation": "src/locale/messages.us.xlf",
+            "baseHref": ""
+          }
+        }
+      },
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -29,10 +42,7 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "sass",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
+            "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.sass"
@@ -61,6 +71,16 @@
               ],
               "outputHashing": "all"
             },
+            "br": {
+              "localize": ["br"],
+              "outputPath": "dist/under-construction-br/",
+              "i18nMissingTranslation": "error"
+            },
+            "us": {
+              "localize": ["us"],
+              "outputPath": "dist/under-construction-us/",
+              "i18nMissingTranslation": "error"
+            },
             "development": {
               "buildOptimizer": false,
               "optimization": false,
@@ -77,6 +97,12 @@
           "configurations": {
             "production": {
               "browserTarget": "itau-bba:build:production"
+            },
+            "br": {
+              "browserTarget": "itau-bba:build:br"
+            },
+            "us": {
+              "browserTarget": "itau-bba:build:us"
             },
             "development": {
               "browserTarget": "itau-bba:build:development"
@@ -98,10 +124,7 @@
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
             "inlineStyleLanguage": "sass",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
+            "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.sass"
