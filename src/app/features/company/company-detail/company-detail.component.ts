@@ -39,21 +39,22 @@ export class CompanyDetailComponent implements OnInit {
     this.companyService
       .findById(id)
       .pipe(take(1))
-      .subscribe(({ business }) => {
-        this.title = `${this.title} ${business}`;
-        this.subTitle = `${this.subTitle} ${business}#${id}`;
+      .subscribe((res) => {
+        this.title = `${this.title} ${res.business}`;
+        this.subTitle = `${this.subTitle} ${res.business}#${id}`;
+        console.log(res);
+
+        this.form.patchValue(res);
       });
   }
 
   private formConfig() {
     this.form = this.fb.group({
-      company: this.fb.group({
-        name: ['', Validators.required],
-        business: ['', Validators.required],
-        valuation: ['', Validators.required],
-        active: ['', Validators.required],
-        cnpj: ['', Validators.required],
-      }),
+      name: ['', Validators.required],
+      business: ['', Validators.required],
+      valuation: ['', Validators.required],
+      active: ['', Validators.required],
+      cnpj: ['', Validators.required],
       cep: this.fb.group({
         street: [''],
         city: [''],

@@ -1,12 +1,5 @@
-import {
-  Component,
-  EventEmitter,
-  OnDestroy,
-  OnInit,
-  Output,
-} from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Subscription } from 'rxjs';
 import { CepModel } from '../../models/cep_model';
 import { CepService } from '../../services/extermal/cep/cep.service';
 
@@ -15,11 +8,10 @@ import { CepService } from '../../services/extermal/cep/cep.service';
   templateUrl: './cep.component.html',
   styleUrls: ['./cep.component.sass'],
 })
-export class CepComponent implements OnInit, OnDestroy {
+export class CepComponent implements OnInit {
   @Output()
   formGroupCep: EventEmitter<CepModel> = new EventEmitter<CepModel>();
   form!: FormGroup;
-  formSubscription!: Subscription;
   toSend: boolean = true;
 
   constructor(
@@ -54,9 +46,5 @@ export class CepComponent implements OnInit, OnDestroy {
         this.toSend = true;
       }
     });
-  }
-
-  ngOnDestroy(): void {
-    // this.formSubscription.unsubscribe();
   }
 }

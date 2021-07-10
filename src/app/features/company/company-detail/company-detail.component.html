@@ -1,5 +1,49 @@
 <app-content-body [title]="title" [subTitle]="subTitle">
   <form [formGroup]="form">
-    <app-cep  (formGroupCep)="formCep($event)"  ></app-cep>
+    <app-cep (formGroupCep)="formCep($event)"></app-cep>
+    <h3>Detalhes da Empresa</h3>
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>Nome</mat-label>
+        <input matInput placeholder="nome" formControlName="name" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>business</mat-label>
+        <input matInput placeholder="business" formControlName="business" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>valuation</mat-label>
+        <input
+          matInput
+          placeholder="valuation"
+          formControlName="valuation"
+          prefix="R$ "
+          mask="separator.2"
+          thousandSeparator="."
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>CNPJ</mat-label>
+        <input
+          matInput
+          placeholder="CNPJ"
+          formControlName="cnpj"
+          mask="00.000.000/0000-00"
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Ativo?</mat-label>
+        <mat-select formControlName="active">
+          <mat-option [value]="true">Sim</mat-option>
+          <mat-option [value]="false">Não</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <button class="bottom-back" mat-flat-button color="primary">Voltar</button>
+    <button class="bottom-save" mat-flat-button color="primary">Salvar</button>
   </form>
 </app-content-body>
