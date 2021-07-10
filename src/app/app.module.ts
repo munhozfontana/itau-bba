@@ -6,10 +6,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CompanyModule } from './features/company/company.module';
 import { SharedModule } from './shared/shared.module';
+import { DashboardComponent } from './features/dashboad/dashboard/dashboard.component';
 
 registerLocaleData(br, 'pt');
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, DashboardComponent],
   imports: [BrowserModule, AppRoutingModule, SharedModule],
   exports: [CompanyModule],
   providers: [
