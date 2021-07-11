@@ -6,29 +6,38 @@ import { CompanyModel } from 'src/app/shared/models/company_model';
 })
 export class DashboardService {
   // Fake data, in future there will be web-service
-  private companyModelList: CompanyModel[] = [];
 
   constructor() {}
 
   findAllWhereHaveLocation(): CompanyModel[] {
-    console.log(this.companyModelList);
-
-    return this.companyModelList.filter(
+    return this.getLocationLocalStorage().filter(
       (filterItem) => filterItem.cep.cep != ''
     );
   }
 
   saveByCompany(companyModel: CompanyModel) {
-    const index = this.companyModelList.findIndex(
+    const dataFromLocalStorage = this.getLocationLocalStorage();
+    const index = dataFromLocalStorage.findIndex(
       (item) => item.id === companyModel.id
     );
 
     if (index >= 0) {
-      console.log('update');
-      this.companyModelList[index] = companyModel;
+      dataFromLocalStorage[index] = companyModel;
     } else {
-      console.log('save');
-      this.companyModelList.push(companyModel);
+      dataFromLocalStorage.push(companyModel);
+      this.setLocationLocalStorage(dataFromLocalStorage);
     }
+  }
+
+  private getLocationLocalStorage(): CompanyModel[] {
+    const res = localStorage.getItem('locations');
+    if (res) {
+      return JSON.parse(res);
+    }
+    return [];
+  }
+
+  private setLocationLocalStorage(companyModel: CompanyModel[]): void {
+    localStorage.setItem('locations', JSON.stringify(companyModel));
   }
 }
