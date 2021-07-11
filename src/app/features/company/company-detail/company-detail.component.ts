@@ -14,11 +14,12 @@ import { CompanyService } from 'src/app/shared/services/extermal/company/company
   styleUrls: ['./company-detail.component.sass'],
 })
 export class CompanyDetailComponent implements OnInit {
+  // Variables
   title: String = 'Polo';
   subTitle: String = 'exibindo detalhes do polo';
   form!: FormGroup;
-  cepModel!: CepModel;
 
+  // Life cycle methods
   constructor(
     private activatedRoute: ActivatedRoute,
     private companyService: CompanyService,
@@ -32,6 +33,7 @@ export class CompanyDetailComponent implements OnInit {
     this.getCompanyById();
   }
 
+  // Recover parameter from URL and populate elements
   private getCompanyById() {
     const id = this.activatedRoute.snapshot.paramMap.get('id');
     if (id) {
@@ -39,11 +41,8 @@ export class CompanyDetailComponent implements OnInit {
     }
   }
 
+  // Recover data from web-service by id parameterized
   private populate(id: string) {
-    this.populateTitle(id);
-  }
-
-  private populateTitle(id: string) {
     this.companyService
       .findById(id)
       .pipe(take(1))
@@ -54,6 +53,7 @@ export class CompanyDetailComponent implements OnInit {
       });
   }
 
+  // Initial form setup
   private formConfig() {
     this.form = this.fb.group({
       name: ['', Validators.required],
@@ -72,17 +72,18 @@ export class CompanyDetailComponent implements OnInit {
     });
   }
 
+  // Populate cep
   formCep(cep: CepModel) {
-    this.cepModel = cep;
     this.form.get('cep')?.patchValue(cep);
   }
 
+  // Back navigation
   cancel() {
     this.location.back();
   }
 
+  // Save elements
   save() {
-    console.log(this.form.value);
     this.location.back();
     this._snackBar.open(
       `Polo ${(this.form.value as CompanyModel).name} salvo com sucesso`,

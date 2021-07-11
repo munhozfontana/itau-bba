@@ -13,9 +13,9 @@ import { CompanyModel } from './../../../shared/models/company_model';
   styleUrls: ['./company-list.component.sass'],
 })
 export class CompanyListComponent implements OnInit {
+  // Variables
   title: String = 'Polos Itaú';
   subTitle: String = 'confira abaixo alguns dos principais polos do itaú';
-
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   dataSource!: MatTableDataSource<CompanyModel>;
@@ -27,14 +27,15 @@ export class CompanyListComponent implements OnInit {
     'acao',
   ];
 
+  // life cycles methods
   constructor(private companyService: CompanyService, private router: Router) {}
 
-  // lifecycles from angular
   ngOnInit(): void {
     this.getCompany();
   }
 
-  // methods
+  // Methods
+  // Retrieve the data from web-service
   private getCompany(): void {
     this.companyService
       .findAll()
@@ -45,27 +46,32 @@ export class CompanyListComponent implements OnInit {
       });
   }
 
+  // Populate list at table, initially used in getCompany
   private populateList(res: CompanyModel[]) {
     this.dataSource = new MatTableDataSource<CompanyModel>(res);
   }
 
+  // Config table at screen
   private configTable() {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
   }
 
+  // From to status
   public getStatus(status: boolean) {
     if (status) {
       return { active: true };
     } else {
-      return { desactive: true };
+      return { deactivate: true };
     }
   }
 
+  // Navigate to detail page from company
   public navigateToDetail(id: String) {
     this.router.navigate([`company/detail/${id}`]);
   }
 
+  // Filter all elements at table
   public searchText(event: String) {
     this.dataSource.filter = event.trim().toLowerCase();
   }

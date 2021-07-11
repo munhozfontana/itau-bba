@@ -15,7 +15,7 @@ export class LoadingService {
     }, 1000);
   };
 
-  public getLoding = (): EventEmitter<boolean> => {
+  public getLoading = (): EventEmitter<boolean> => {
     return this.emitLoading;
   };
 }

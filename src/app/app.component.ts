@@ -6,6 +6,4 @@ import { Component, ViewEncapsulation } from '@angular/core';
   styleUrls: ['./app.component.sass'],
   encapsulation: ViewEncapsulation.None,
 })
-export class AppComponent {
-  title = 'itau-bba';
-}
+export class AppComponent {}

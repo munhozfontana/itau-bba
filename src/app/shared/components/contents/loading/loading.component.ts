@@ -9,15 +9,17 @@ import { LoadingService } from './loading.service';
   styleUrls: ['./loading.component.sass'],
 })
 export class LoadingComponent implements OnInit {
+  // Variables
   color: ThemePalette = 'primary';
   mode: ProgressSpinnerMode = 'determinate';
   value = 50;
-
   isLoading = false;
 
+  //Lifecycle Methods
   constructor(private loadingService: LoadingService) {}
 
   ngOnInit(): void {
-    this.loadingService.getLoding().subscribe((res) => (this.isLoading = res));
+    // Listen each changed from loadingService, when true show loading at screen
+    this.loadingService.getLoading().subscribe((res) => (this.isLoading = res));
   }
 }
