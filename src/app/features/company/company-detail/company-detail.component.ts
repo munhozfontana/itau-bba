@@ -6,7 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { take } from 'rxjs/operators';
 import { CepModel } from 'src/app/shared/models/cep_model';
 import { CompanyModel } from 'src/app/shared/models/company_model';
-import { CompanyService } from 'src/app/shared/services/extermal/company/company.service';
+import { CompanyService } from 'src/app/shared/services/apis/company/company.service';
 
 @Component({
   selector: 'app-company-detail',
@@ -35,10 +35,14 @@ export class CompanyDetailComponent implements OnInit {
 
   // Recover parameter from URL and populate elements
   private getCompanyById() {
-    const id = this.activatedRoute.snapshot.paramMap.get('id');
+    const id = this.getParameterId();
     if (id) {
       this.populate(id);
     }
+  }
+
+  private getParameterId() {
+    return this.activatedRoute.snapshot.paramMap.get('id');
   }
 
   // Recover data from web-service by id parameterized
@@ -62,12 +66,18 @@ export class CompanyDetailComponent implements OnInit {
       active: ['', Validators.required],
       cnpj: ['', Validators.required],
       cep: this.fb.group({
-        cep: [''],
         state: [''],
         city: [''],
         neighborhood: [''],
         street: [''],
         service: [''],
+        location: this.fb.group({
+          type: [''],
+          coordinates: this.fb.group({
+            longitude: [''],
+            latitude: [''],
+          }),
+        }),
       }),
     });
   }
@@ -85,6 +95,7 @@ export class CompanyDetailComponent implements OnInit {
   // Save elements
   save() {
     this.location.back();
+    this.companyService.save({ ...this.form.value, id: this.getParameterId() });
     this._snackBar.open(
       `Polo ${(this.form.value as CompanyModel).name} salvo com sucesso`,
       undefined,

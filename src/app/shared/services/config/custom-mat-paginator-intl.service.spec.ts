@@ -1,5 +1,4 @@
 import { TestBed } from '@angular/core/testing';
-
 import { CustomMatPaginatorIntlService } from './custom-mat-paginator-intl.service';
 
 describe('CustomMatPaginatorIntlService', () => {

@@ -4,7 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { take } from 'rxjs/operators';
-import { CompanyService } from 'src/app/shared/services/extermal/company/company.service';
+import { CompanyService } from 'src/app/shared/services/apis/company/company.service';
 import { CompanyModel } from './../../../shared/models/company_model';
 
 @Component({

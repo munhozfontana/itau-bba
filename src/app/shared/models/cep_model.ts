@@ -1,3 +1,5 @@
+import { CoordinateModel } from './cordinate_model';
+
 export class CepModel {
   cep!: string;
   state!: string;
@@ -7,9 +9,6 @@ export class CepModel {
   service!: string;
   location!: {
     type: string;
-    coordinates: {
-      longitude: string;
-      latitude: string;
-    };
+    coordinates: CoordinateModel;
   };
 }

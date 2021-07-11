@@ -1,1 +1,15 @@
-<p>dashboard works!</p>
+<app-content-body [title]="title" [subTitle]="subTitle">
+  <ng-container *ngIf="this.companyModelList.length != 0; else elseTemplate">
+    <app-ol-map
+    class="map"
+    [center]="moveMap"
+    [zoom]="8.5"
+    (mapReady)="onMapReady($event)"
+  ></app-ol-map>
+  </ng-container>
+  <ng-template #elseTemplate>
+    <h3>Cadastre ao menos uma compania com CEP</h3>
+  </ng-template>
+
+
+</app-content-body>

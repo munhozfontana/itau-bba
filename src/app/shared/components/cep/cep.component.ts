@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CepModel } from '../../models/cep_model';
-import { CepService } from '../../services/extermal/cep/cep.service';
+import { CepService } from '../../services/apis/cep/cep.service';
 
 @Component({
   selector: 'app-cep',

@@ -7,6 +7,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatMenuModule } from '@angular/material/menu';
 import {
   MatPaginatorIntl,
   MatPaginatorModule,
@@ -18,15 +19,18 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { NgxMaskModule } from 'ngx-mask';
 import { CepComponent } from './components/cep/cep.component';
 import { ContentBodyComponent } from './components/contents/content-body/content-body.component';
 import { LoadingComponent } from './components/contents/loading/loading.component';
 import { HeaderComponent } from './components/header/header.component';
+import { OlMapComponent } from './components/ol-map/ol-map.component';
 import { TitleComponent } from './components/title/title.component';
-import { CustomMatPaginatorIntlService } from './services/custom-mat-paginator-intl.service';
+import { CustomMatPaginatorIntlService } from './services/config/custom-mat-paginator-intl.service';
 import { LoadingInterceptorService } from './services/interceptors/loading/loading-interceptor.service';
 import { ToastInterceptorService } from './services/interceptors/toast/toast-interceptor.service';
+
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -34,6 +38,7 @@ import { ToastInterceptorService } from './services/interceptors/toast/toast-int
     ContentBodyComponent,
     LoadingComponent,
     CepComponent,
+    OlMapComponent,
   ],
   imports: [
     CommonModule,
@@ -54,6 +59,8 @@ import { ToastInterceptorService } from './services/interceptors/toast/toast-int
     NgxMaskModule.forRoot(),
     MatSelectModule,
     MatButtonModule,
+    NgxChartsModule,
+    MatMenuModule,
   ],
   exports: [
     HeaderComponent,
@@ -76,6 +83,9 @@ import { ToastInterceptorService } from './services/interceptors/toast/toast-int
     NgxMaskModule,
     MatSelectModule,
     MatButtonModule,
+    OlMapComponent,
+    NgxChartsModule,
+    MatMenuModule,
   ],
   providers: [
     {

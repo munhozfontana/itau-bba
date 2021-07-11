@@ -14,10 +14,25 @@
         <p class="strong-text">John Doe</p>
         <p class="comum-text">Diretor itaú BBA</p>
       </span>
-      <span class="comum-text">
-        <mat-icon aria-hidden="false" aria-label="Example home icon"
-          >expand_more</mat-icon
-        >
+      <span class="comum-text" >
+        <!-- <mat-icon aria-hidden="false" aria-label="Example home icon"
+          ></mat-icon
+        > -->
+
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+          <mat-icon>expand_more</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item routerLink='dashboard'>
+            <mat-icon>dashboard</mat-icon>
+            <span>Dashboard</span>
+          </button>
+          <button mat-menu-item  routerLink='company'>
+            <mat-icon>home</mat-icon>
+            <span>Polos Itaú</span>
+          </button>
+        </mat-menu>
+
       </span>
     </div>
   </div>
