@@ -92,7 +92,7 @@ export class CompanyDetailComponent implements OnInit {
     this.location.back();
   }
 
-  // Save elements
+  // Save elements in fake web-service
   save() {
     this.location.back();
     this.companyService.save({ ...this.form.value, id: this.getParameterId() });

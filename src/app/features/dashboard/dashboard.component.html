@@ -1,15 +1,14 @@
 <app-content-body [title]="title" [subTitle]="subTitle">
-  <ng-container *ngIf="this.companyModelList.length != 0; else elseTemplate">
+  <ng-container *ngIf="this.companyModelList.length != 1; else elseTemplate">
     <app-ol-map
-    class="map"
-    [center]="moveMap"
-    [zoom]="8.5"
-    (mapReady)="onMapReady($event)"
-  ></app-ol-map>
+      class="map"
+      [center]="moveMap"
+      [zoom]="4.5"
+      [marks]="marks"
+      (mapReady)="onMapReady($event)"
+    ></app-ol-map>
   </ng-container>
   <ng-template #elseTemplate>
-    <h3>Cadastre ao menos uma compania com CEP</h3>
+    <h3>Cadastre ao menos uma empresa com CEP</h3>
   </ng-template>
-
-
 </app-content-body>

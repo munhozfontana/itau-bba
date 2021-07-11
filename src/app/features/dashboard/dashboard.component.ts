@@ -15,7 +15,12 @@ export class DashboardComponent implements OnInit {
   subTitle: String = 'detalhamento de dados';
   companyModelList: CompanyModel[] = [];
 
-  moveMap!: CoordinateModel;
+  moveMap: CoordinateModel = {
+    latitude: '-15.77972',
+    longitude: '-47.92972',
+  } as CoordinateModel;
+
+  marks: CoordinateModel[] = [];
 
   constructor(
     private dashBoardService: DashboardService,
@@ -24,16 +29,15 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     const res = this.dashBoardService.findAllWhereHaveLocation();
-
     if (res.length == 0) {
       this._snackBar.open(`Nenhum dado encontrato`, undefined, {
         duration: 5 * 1000,
       } as MatSnackBarConfig);
     } else {
       this.companyModelList = res;
-      this.moveMap = res.find(
-        (item) => item.cep.location != null
-      )?.cep.location.coordinates!;
+      this.marks = res
+        .filter((item) => item.cep.location != null)
+        .map((item) => item.cep.location.coordinates);
     }
   }
 
