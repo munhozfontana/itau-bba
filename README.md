@@ -1,5 +1,23 @@
-# ItauBba
+# Itau-Bba
+## Projeto com objeitvo de fazer operações simples de listage e cadastro.
 
+### Features
+
+- ✅ Listagem das empresas
+- ✅ Detalhamento da empresa
+- ✅ Cadastrar empresa de maneira local
+
+### Extra
+- ✅ Dashboard
+- ✅ Map dashboard
+- ✅ Gráficos dashboard
+
+
+### contato 🏢
+ - https://www.linkedin.com/in/luis-fernando-munhoz-fontana-neto-652aa88a/
+ - munhozfontana@gmail.com
+
+---
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.1.1.
 
 ## Development server

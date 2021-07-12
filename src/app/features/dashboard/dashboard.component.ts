@@ -54,16 +54,23 @@ export class DashboardComponent implements OnInit {
         duration: 5 * 1000,
       } as MatSnackBarConfig);
     } else {
-      this.companyModelList = res;
-      this.marks = res
-        .filter((item) => item.cep.location != null)
-        .map((item) => item.cep.location.coordinates);
-
-      this.pieChartLabels = res.map((item) => item.business);
-      this.pieChartData = res.map((item) => item.valuation);
-      this.activeChartData.push(res.filter((item) => item.active).length);
-      this.activeChartData.push(res.filter((item) => !item.active).length);
+      this.populateMap(res);
+      this.populateGraph(res);
     }
+  }
+
+  private populateGraph(res: CompanyModel[]) {
+    this.pieChartLabels = res.map((item) => item.business);
+    this.pieChartData = res.map((item) => item.valuation);
+    this.activeChartData.push(res.filter((item) => item.active).length);
+    this.activeChartData.push(res.filter((item) => !item.active).length);
+  }
+
+  private populateMap(res: CompanyModel[]) {
+    this.companyModelList = res;
+    this.marks = res
+      .filter((item) => item.cep.location != null)
+      .map((item) => item.cep.location.coordinates);
   }
 
   public onMapReady(event: any) {
