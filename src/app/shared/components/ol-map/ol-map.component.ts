@@ -13,13 +13,11 @@ import { createStyleFunction } from 'ol/Feature';
 import Point from 'ol/geom/Point';
 import TileLayer from 'ol/layer/Tile';
 import VectorLayer from 'ol/layer/Vector';
-import { fromLonLat, get as GetProjection } from 'ol/proj';
-import { register } from 'ol/proj/proj4';
+import { fromLonLat } from 'ol/proj';
 import Projection from 'ol/proj/Projection';
+import OSM from 'ol/source/OSM';
 import VectorSource from 'ol/source/Vector';
-import XYZ from 'ol/source/XYZ';
 import { Icon, Style } from 'ol/style';
-import proj4 from 'proj4';
 import { CoordinateModel } from '../../models/cordinate_model';
 
 @Component({
@@ -47,13 +45,6 @@ export class OlMapComponent implements AfterViewInit {
   }
 
   private initMap(): void {
-    proj4.defs(
-      'EPSG:3857',
-      '+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +wktext  +no_defs'
-    );
-    register(proj4);
-    this.projection = GetProjection('EPSG:3857');
-    this.projection.setExtent(this.extent);
     this.view = new View({
       center: fromLonLat([
         parseFloat(this.center.longitude),
@@ -67,9 +58,7 @@ export class OlMapComponent implements AfterViewInit {
     this.Map = new Map({
       layers: [
         new TileLayer({
-          source: new XYZ({
-            url: 'https://{a-c}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-          }),
+          source: new OSM({}),
         }),
         new VectorLayer({
           source: new VectorSource({

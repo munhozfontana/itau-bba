@@ -25,8 +25,8 @@ export class DashboardService {
       dataFromLocalStorage[index] = companyModel;
     } else {
       dataFromLocalStorage.push(companyModel);
-      this.setLocationLocalStorage(dataFromLocalStorage);
     }
+    this.setLocationLocalStorage(dataFromLocalStorage);
   }
 
   private getLocationLocalStorage(): CompanyModel[] {

@@ -1,9 +1,39 @@
 <app-content-body [title]="title" [subTitle]="subTitle">
-  <app-ol-map
-      class="map"
-      [center]="moveMap"
-      [zoom]="4.5"
-      [marks]="marks"
-      (mapReady)="onMapReady($event)"
-    ></app-ol-map>
+  <div class="a">
+    <div class="charts">
+      <h4>Empresas/Valor - Aticos/quantidade</h4>
+      <div class="chart">
+        <canvas
+          baseChart
+          [data]="pieChartData"
+          [labels]="pieChartLabels"
+          [chartType]="'pie'"
+          [colors]="pieChartColors"
+          [legend]="false"
+        >
+        </canvas>
+      </div>
+      <div class="chart">
+        <canvas
+          baseChart
+          [data]="activeChartData"
+          [labels]="activeChartLabels"
+          [chartType]="'pie'"
+          [colors]="pieChartColors"
+          [legend]="false"
+        >
+        </canvas>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div class="map">
+      <app-ol-map
+        class="map"
+        [center]="moveMap"
+        [zoom]="4.5"
+        [marks]="marks"
+        (mapReady)="onMapReady($event)"
+      ></app-ol-map>
+    </div>
+  </div>
 </app-content-body>

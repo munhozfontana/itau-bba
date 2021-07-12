@@ -19,7 +19,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
-import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { ChartsModule } from 'ng2-charts';
 import { NgxMaskModule } from 'ngx-mask';
 import { CepComponent } from './components/cep/cep.component';
 import { ContentBodyComponent } from './components/contents/content-body/content-body.component';
@@ -59,7 +59,7 @@ import { ToastInterceptorService } from './services/interceptors/toast/toast-int
     NgxMaskModule.forRoot(),
     MatSelectModule,
     MatButtonModule,
-    NgxChartsModule,
+    ChartsModule,
     MatMenuModule,
   ],
   exports: [
@@ -84,7 +84,7 @@ import { ToastInterceptorService } from './services/interceptors/toast/toast-int
     MatSelectModule,
     MatButtonModule,
     OlMapComponent,
-    NgxChartsModule,
+    ChartsModule,
     MatMenuModule,
   ],
   providers: [

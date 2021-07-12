@@ -85,6 +85,7 @@ export class CompanyDetailComponent implements OnInit {
   // Populate cep
   formCep(cep: CepModel) {
     this.form.get('cep')?.patchValue(cep);
+    console.log(this.form);
   }
 
   // Back navigation
