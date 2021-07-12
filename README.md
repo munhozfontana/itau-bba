@@ -13,6 +13,21 @@
 - ✅ Gráficos dashboard
 
 
+## Fluxo de navegação
+
+### Tela de listagem de empresas
+![alt text](./docs/passo1.png)
+
+### Detalhamento da empresa
+![alt text](./docs/passo2.png)
+
+### Seleção de dashboard
+![alt text](./docs/passo3.png)
+
+
+### Graficos e Mapa
+![alt text](./docs/passo4.png)
+
 ### 📡 contato 📡
  - https://www.linkedin.com/in/luis-fernando-munhoz-fontana-neto-652aa88a/
  - munhozfontana@gmail.com
